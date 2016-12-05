@@ -29,3 +29,34 @@
     </div>
   </div>
 </div>
+
+<!-- A Paycheck has many bills -->
+
+<div class="row">
+  <div class="col-md-12">
+    <ul class="list-group">
+      <li class="list-group-item list-group-item-info">
+        Bills
+      </li>
+
+      <% @paycheck.bills.each do |bill| %>
+        <li class="list-group-item">
+          <a href="/bills/<%= bill.id %>">
+            <%= bill.recipient %>
+          </a>
+          <div class="btn-group btn-group-xs pull-right">
+            <a href="/bills/<%= bill.id %>" class="btn btn-primary">
+              <i class="fa fa-search-plus"></i>
+            </a>
+            <a href="/bills/<%= bill.id %>/edit" class="btn btn-warning">
+              <i class="fa fa-edit"></i>
+            </a>
+            <a href="/delete_bill/<%= bill.id %>" class="btn btn-danger" rel="nofollow">
+              <i class="fa fa-trash-o"></i>
+            </a>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
