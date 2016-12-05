@@ -1,6 +1,9 @@
 class Paycheck < ApplicationRecord
   # Direct associations
 
+  has_many   :bills,
+             :dependent => :nullify
+
   # Indirect associations
 
   # Validations

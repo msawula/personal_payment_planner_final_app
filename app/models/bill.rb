@@ -1,6 +1,9 @@
 class Bill < ApplicationRecord
   # Direct associations
 
+  belongs_to :paycheck,
+             :counter_cache => true
+
   # Indirect associations
 
   # Validations
