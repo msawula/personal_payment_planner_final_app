@@ -1,0 +1,31 @@
+<div class="page-header">
+  <h3>Paycheck #<%= @paycheck.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12 mb-2">
+    <dl class="dl-horizontal">
+      <dt>Date received</dt>
+      <dd><%= @paycheck.date_received %></dd>
+
+      <dt>Average amount</dt>
+      <dd><%= @paycheck.average_amount %></dd>
+
+      <dt>Income source</dt>
+      <dd><%= @paycheck.income_source %></dd>
+
+    </dl>
+
+    <div class="btn-group btn-group-justified">
+      <a href="/paychecks" class="btn btn-primary">
+        Back
+      </a>
+      <a href="/paychecks/<%= @paycheck.id %>/edit" class="btn btn-warning">
+        Edit
+      </a>
+      <a href="/delete_paycheck/<%= @paycheck.id %>" class="btn btn-danger" rel="nofollow">
+        Delete
+      </a>
+    </div>
+  </div>
+</div>
