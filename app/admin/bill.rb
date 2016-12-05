@@ -1,5 +1,7 @@
 ActiveAdmin.register Bill do
 
+ permit_params :recipient, :date_due, :amount_due, :website_to_pay_bill, :paycheck_id
+
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
