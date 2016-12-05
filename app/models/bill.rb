@@ -24,4 +24,6 @@ class Bill < ApplicationRecord
 
   validates :recipient, :length => { :maximum => 15 }
 
+  validates :user_id, :presence => true
+
 end

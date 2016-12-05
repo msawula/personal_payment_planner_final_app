@@ -22,4 +22,8 @@ class Paycheck < ApplicationRecord
 
   validates :income_source, :presence => true
 
+  validates :user_id, :uniqueness => true
+
+  validates :user_id, :presence => true
+
 end
