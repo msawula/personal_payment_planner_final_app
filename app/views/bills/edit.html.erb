@@ -1,0 +1,73 @@
+<!-- Validation failure messages -->
+<% if @bill.errors.any? %>
+  <% @bill.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+  <h3>Edit Bill #<%= @bill.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/update_bill/<%= @bill.id %>" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for recipient -->
+      <div class="form-group">
+        <label for="recipient" class="control-label">
+          Recipient
+        </label>
+
+        <input type="text" id="recipient" name="recipient" placeholder="Recipient" class="form-control" value="<%= @bill.recipient %>">
+      </div>
+
+      <!-- Label and input for date_due -->
+      <div class="form-group">
+        <label for="date_due" class="control-label">
+          Date due
+        </label>
+
+        <input type="text" id="date_due" name="date_due" placeholder="Date due" class="form-control" value="<%= @bill.date_due %>">
+      </div>
+
+      <!-- Label and input for amount_due -->
+      <div class="form-group">
+        <label for="amount_due" class="control-label">
+          Amount due
+        </label>
+
+        <input type="text" id="amount_due" name="amount_due" placeholder="Amount due" class="form-control" value="<%= @bill.amount_due %>">
+      </div>
+
+      <!-- Label and input for website_to_pay_bill -->
+      <div class="form-group">
+        <label for="website_to_pay_bill" class="control-label">
+          Website to pay bill
+        </label>
+
+        <input type="text" id="website_to_pay_bill" name="website_to_pay_bill" placeholder="Website to pay bill" class="form-control" value="<%= @bill.website_to_pay_bill %>">
+      </div>
+
+      <!-- Label and input for paycheck_id -->
+      <div class="form-group">
+        <label for="paycheck_id" class="control-label">
+          Paycheck
+        </label>
+
+        <input type="text" id="paycheck_id" name="paycheck_id" placeholder="Paycheck" class="form-control" value="<%= @bill.paycheck_id %>">
+      </div>
+
+      <button class="btn btn-warning">
+        Update Bill
+      </button>
+      or
+      <a href="/bills/<%= @bill.id %>">Cancel</a>
+    </form>
+  </div>
+</div>
