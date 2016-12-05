@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   ActiveAdmin.routes(self)
   root :to => "paychecks#index"
   # Routes for the Bill resource:
