@@ -14,6 +14,9 @@
       <dt>Income source</dt>
       <dd><%= @paycheck.income_source %></dd>
 
+      <dt>User</dt>
+      <dd><%= @paycheck.user_id %></dd>
+
     </dl>
 
     <div class="btn-group btn-group-justified">
@@ -101,6 +104,15 @@
 
       <!-- Label and input for paycheck_id -->
       <input type="hidden" name="paycheck_id" value="<%= @paycheck.id %>">
+
+      <!-- Label and input for user_id -->
+      <div class="form-group">
+        <label for="user_id" class="control-label">
+          User
+        </label>
+
+        <input type="text" id="user_id" name="user_id" placeholder="User" class="form-control" value="">
+      </div>
 
       <button class="btn btn-block btn-success">
         Create Bill

@@ -49,6 +49,18 @@
       </script>
 
 <div class="form-group">
+  <%= f.label :user_id, "User" %>
+  <div class="row">
+    <div class='col-md-6 mb-1'>
+      <%= f.text_field :user_id_gteq, :class => "form-control", :placeholder => "User greater than or equal to" %>
+    </div>
+    <div class='col-md-6'>
+      <%= f.text_field :user_id_lteq, :class => "form-control", :placeholder => "User less than or equal to" %>
+    </div>
+  </div>
+</div>
+
+<div class="form-group">
     <%= f.label :income_source_cont, "Income source contains" %>
     <%= f.text_field :income_source_cont, :class => "form-control", :placeholder => "Income source contains" %>
   </div>
@@ -127,6 +139,7 @@
         <th>Date received</th>
         <th>Average amount</th>
         <th>Income source</th>
+        <th>User</th>
         <th>Actions</th>
       </tr>
 
@@ -135,6 +148,7 @@
         <td><%= paycheck.date_received %></td>
         <td><%= paycheck.average_amount %></td>
         <td><%= paycheck.income_source %></td>
+        <td><%= paycheck.user_id %></td>
         <td>
           <a href="/paychecks/<%= paycheck.id %>" class="btn btn-primary">Show</a>
           <a href="/paychecks/<%= paycheck.id %>/edit" class="btn btn-warning">Edit</a>

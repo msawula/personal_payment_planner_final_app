@@ -26,6 +26,7 @@ class BillsController < ApplicationController
     @bill.amount_due = params[:amount_due]
     @bill.website_to_pay_bill = params[:website_to_pay_bill]
     @bill.paycheck_id = params[:paycheck_id]
+    @bill.user_id = params[:user_id]
 
     save_status = @bill.save
 
@@ -57,6 +58,7 @@ class BillsController < ApplicationController
     @bill.amount_due = params[:amount_due]
     @bill.website_to_pay_bill = params[:website_to_pay_bill]
     @bill.paycheck_id = params[:paycheck_id]
+    @bill.user_id = params[:user_id]
 
     save_status = @bill.save
 

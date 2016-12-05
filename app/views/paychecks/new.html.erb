@@ -45,6 +45,15 @@
         <input type="text" id="income_source" name="income_source" placeholder="Income source" class="form-control" value="<%= @paycheck.income_source %>">
       </div>
 
+      <!-- Label and input for user_id -->
+      <div class="form-group">
+        <label for="user_id" class="control-label">
+          User
+        </label>
+
+        <input type="text" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= @paycheck.user_id %>">
+      </div>
+
       <button class="btn btn-success">
         Create Paycheck
       </button>
