@@ -18,7 +18,13 @@
       <dd><%= @bill.website_to_pay_bill %></dd>
 
       <dt>Paycheck</dt>
-      <dd><%= @bill.paycheck_id %></dd>
+      <dd>
+        <% if @bill.paycheck.present? %>
+          <a href="/paychecks/<%= @bill.paycheck_id %>">
+            <%= @bill.paycheck.date_received %>
+          </a>
+        <% end %>
+      </dd>
 
     </dl>
 

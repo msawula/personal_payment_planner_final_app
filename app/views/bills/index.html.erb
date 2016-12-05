@@ -23,7 +23,13 @@
         <td><%= bill.date_due %></td>
         <td><%= bill.amount_due %></td>
         <td><%= bill.website_to_pay_bill %></td>
-        <td><%= bill.paycheck.date_received %></td>
+        <td>
+          <% if bill.paycheck.present? %>
+            <a href="/paychecks/<%= bill.paycheck.id %>">
+              <%= bill.paycheck.date_received %>
+            </a>
+          <% end %>
+        </td>
         <td>
           <a href="/bills/<%= bill.id %>" class="btn btn-primary">Show</a>
           <a href="/bills/<%= bill.id %>/edit" class="btn btn-warning">Edit</a>
