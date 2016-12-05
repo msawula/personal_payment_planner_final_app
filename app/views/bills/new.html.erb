@@ -60,7 +60,7 @@
           Paycheck
         </label>
 
-        <input type="text" id="paycheck_id" name="paycheck_id" placeholder="Paycheck" class="form-control" value="<%= @bill.paycheck_id %>">
+        <%= select_tag(:paycheck_id, options_from_collection_for_select(Paycheck.all, :id, :date_received, @bill.paycheck_id), :class => "form-control") %>
       </div>
 
       <button class="btn btn-success">
