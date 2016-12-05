@@ -5,4 +5,6 @@ class Bill < ApplicationRecord
 
   # Validations
 
+  validates :recipient, :length => { :maximum => 15 }
+
 end
