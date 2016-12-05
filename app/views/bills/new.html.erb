@@ -63,13 +63,13 @@
         <%= select_tag(:paycheck_id, options_from_collection_for_select(Paycheck.all, :id, :date_received, @bill.paycheck_id), :class => "form-control") %>
       </div>
 
-      <!-- Label and input for userid -->
+      <!-- Label and input for user_id -->
       <div class="form-group">
-        <label for="userid" class="control-label">
-          Userid
+        <label for="user_id" class="control-label">
+          User
         </label>
 
-        <input type="text" id="userid" name="userid" placeholder="Userid" class="form-control" value="<%= @bill.userid %>">
+        <input type="text" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= @bill.user_id %>">
       </div>
 
       <button class="btn btn-success">

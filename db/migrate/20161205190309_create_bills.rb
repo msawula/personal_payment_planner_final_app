@@ -6,7 +6,7 @@ class CreateBills < ActiveRecord::Migration
       t.integer :amount_due
       t.string :website_to_pay_bill
       t.integer :paycheck_id
-      t.string :userid
+      t.integer :user_id
 
       t.timestamps
 

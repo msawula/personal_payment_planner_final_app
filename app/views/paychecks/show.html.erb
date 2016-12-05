@@ -14,8 +14,8 @@
       <dt>Income source</dt>
       <dd><%= @paycheck.income_source %></dd>
 
-      <dt>Userid</dt>
-      <dd><%= @paycheck.userid %></dd>
+      <dt>User</dt>
+      <dd><%= @paycheck.user_id %></dd>
 
     </dl>
 
@@ -105,13 +105,13 @@
       <!-- Label and input for paycheck_id -->
       <input type="hidden" name="paycheck_id" value="<%= @paycheck.id %>">
 
-      <!-- Label and input for userid -->
+      <!-- Label and input for user_id -->
       <div class="form-group">
-        <label for="userid" class="control-label">
-          Userid
+        <label for="user_id" class="control-label">
+          User
         </label>
 
-        <input type="text" id="userid" name="userid" placeholder="Userid" class="form-control" value="">
+        <input type="text" id="user_id" name="user_id" placeholder="User" class="form-control" value="">
       </div>
 
       <button class="btn btn-block btn-success">
