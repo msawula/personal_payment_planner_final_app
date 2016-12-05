@@ -1,6 +1,7 @@
 class BillsController < ApplicationController
   def index
-    @bills = Bill.page(params[:page]).per(10)
+    @q = Bill.ransack(params[:q])
+    @bills = @q.result(:distinct => true).includes(:paycheck).page(params[:page]).per(10)
 
     render("bills/index.html.erb")
   end
