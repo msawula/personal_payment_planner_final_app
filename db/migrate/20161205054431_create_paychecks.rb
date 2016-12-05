@@ -4,6 +4,7 @@ class CreatePaychecks < ActiveRecord::Migration
       t.date :date_received
       t.integer :average_amount
       t.string :income_source
+      t.string :userid
 
       t.timestamps
 

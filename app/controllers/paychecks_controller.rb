@@ -25,6 +25,7 @@ class PaychecksController < ApplicationController
     @paycheck.date_received = params[:date_received]
     @paycheck.average_amount = params[:average_amount]
     @paycheck.income_source = params[:income_source]
+    @paycheck.userid = params[:userid]
 
     save_status = @paycheck.save
 
@@ -54,6 +55,7 @@ class PaychecksController < ApplicationController
     @paycheck.date_received = params[:date_received]
     @paycheck.average_amount = params[:average_amount]
     @paycheck.income_source = params[:income_source]
+    @paycheck.userid = params[:userid]
 
     save_status = @paycheck.save
 
