@@ -1,6 +1,6 @@
 class BillsController < ApplicationController
   def index
-    @bills = Bill.all
+    @bills = Bill.page(params[:page]).per(10)
 
     render("bills/index.html.erb")
   end

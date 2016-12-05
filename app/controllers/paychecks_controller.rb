@@ -1,6 +1,6 @@
 class PaychecksController < ApplicationController
   def index
-    @paychecks = Paycheck.all
+    @paychecks = Paycheck.page(params[:page]).per(10)
 
     render("paychecks/index.html.erb")
   end
