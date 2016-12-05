@@ -14,6 +14,11 @@
   </div>
 
 <div class="form-group">
+    <%= f.label :userid_cont, "Userid contains" %>
+    <%= f.text_field :userid_cont, :class => "form-control", :placeholder => "Userid contains" %>
+  </div>
+
+<div class="form-group">
     <%= f.label :website_to_pay_bill_cont, "Website to pay bill contains" %>
     <%= f.text_field :website_to_pay_bill_cont, :class => "form-control", :placeholder => "Website to pay bill contains" %>
   </div>
@@ -169,6 +174,7 @@
         <th>Amount due</th>
         <th>Website to pay bill</th>
         <th>Paycheck</th>
+        <th>Userid</th>
         <th>Actions</th>
       </tr>
 
@@ -185,6 +191,7 @@
             </a>
           <% end %>
         </td>
+        <td><%= bill.userid %></td>
         <td>
           <a href="/bills/<%= bill.id %>" class="btn btn-primary">Show</a>
           <a href="/bills/<%= bill.id %>/edit" class="btn btn-warning">Edit</a>

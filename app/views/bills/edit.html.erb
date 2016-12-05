@@ -63,6 +63,15 @@
         <%= select_tag(:paycheck_id, options_from_collection_for_select(Paycheck.all, :id, :date_received, @bill.paycheck_id), :class => "form-control") %>
       </div>
 
+      <!-- Label and input for userid -->
+      <div class="form-group">
+        <label for="userid" class="control-label">
+          Userid
+        </label>
+
+        <input type="text" id="userid" name="userid" placeholder="Userid" class="form-control" value="<%= @bill.userid %>">
+      </div>
+
       <button class="btn btn-warning">
         Update Bill
       </button>
