@@ -1,6 +1,7 @@
 class Paycheck < ApplicationRecord
   # Direct associations
 
+  belongs_to :user
   has_many   :bills,
              :dependent => :nullify
 

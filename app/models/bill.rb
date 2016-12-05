@@ -1,6 +1,7 @@
 class Bill < ApplicationRecord
   # Direct associations
 
+  belongs_to :user
   belongs_to :paycheck,
              :counter_cache => true
 
