@@ -5,4 +5,6 @@ class Paycheck < ApplicationRecord
 
   # Validations
 
+  validates :income_source, :presence => true
+
 end
