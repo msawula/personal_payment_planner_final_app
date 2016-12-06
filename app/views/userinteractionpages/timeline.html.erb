@@ -1,13 +1,22 @@
 <h1> TIMELINE </h1>
 
-
 <% @paychecks.each do |paycheck| %>
-<td><%= paycheck.date_received %></td>
+<h2>Paycheck date: <td><%= paycheck.date_received %></td> </h2>
 <% @bills.each do |bill| %>
+<% if (bill.paycheck_id == nil) %>
 <% if bill.date_due < paycheck.date_received%>
-<td><%= bill.recipient %></td>
-<td><%= bill.amount_due %></td>
-<td><%= bill.amount_due %></td>
+<ul>
+  <td><%= bill.recipient %></td>
+  <td><%= bill.amount_due %></td>
+
+</ul>
+<% bill.paycheck_id = paycheck.id %>
 <% end %>
 <% end %>
+<% end %>
+
+
+Total Amount Spent on Bills for the period: $ Amount
+
+
 <% end %>

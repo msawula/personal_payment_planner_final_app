@@ -7,8 +7,8 @@ class NavigationsController < ApplicationController
 
   def timeline
 
-@paychecks = Paychecks.all
-@bills = Bills.all
+@paychecks = Paycheck.where(:user_id => current_user)
+@bills = Bill.where(:user_id => current_user)
 
     render("userinteractionpages/timeline.html.erb")
   end
