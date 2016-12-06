@@ -24,7 +24,7 @@
           Date received
         </label>
 
-        <input type="text" id="date_received" name="date_received" placeholder="Date received" class="form-control" value="<%= @paycheck.date_received %>">
+        <input type="date" id="date_received" name="date_received" placeholder="Date received" class="form-control" value="<%= @paycheck.date_received %>">
       </div>
 
       <!-- Label and input for average_amount -->
@@ -47,11 +47,11 @@
 
       <!-- Label and input for user_id -->
       <div class="form-group">
-        <label for="user_id" class="control-label">
+        <!-- <label for="user_id" class="control-label">
           User
-        </label>
+        </label> -->
 
-        <input type="text" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= @paycheck.user_id %>">
+        <input type="hidden" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= current_user.id %>">
       </div>
 
       <button class="btn btn-success">

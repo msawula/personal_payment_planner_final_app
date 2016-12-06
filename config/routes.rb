@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
   devise_for :users
   ActiveAdmin.routes(self)
-  root :to => "paychecks#index"
+  root :to => "navigations#splashpage"
+
+  # Routes for the Bill resource:
+  # CREATE
+  get "/welcome", :controller => "navigations", :action => "splashpage"
+  get "/timeline", :controller => "paychecks", :action => "timeline"
   # Routes for the Bill resource:
   # CREATE
   get "/bills/new", :controller => "bills", :action => "new"
@@ -35,6 +40,10 @@ Rails.application.routes.draw do
   # DELETE
   get "/delete_paycheck/:id", :controller => "paychecks", :action => "destroy"
   #------------------------------
+
+  #my profile
+    get "/users", :controller => "users", :action => "index"
+
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

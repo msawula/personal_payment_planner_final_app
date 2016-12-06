@@ -1,0 +1,13 @@
+<h1> TIMELINE </h1>
+
+
+<% @paychecks.each do |paycheck| %>
+<td><%= paycheck.date_received %></td>
+<% @bills.each do |bill| %>
+<% if bill.date_due < paycheck.date_received%>
+<td><%= bill.recipient %></td>
+<td><%= bill.amount_due %></td>
+<td><%= bill.amount_due %></td>
+<% end %>
+<% end %>
+<% end %>

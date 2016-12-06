@@ -6,6 +6,7 @@ class BillsController < ApplicationController
     render("bills/index.html.erb")
   end
 
+
   def show
     @bill = Bill.find(params[:id])
 

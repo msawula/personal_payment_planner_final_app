@@ -5,7 +5,7 @@ class PaychecksController < ApplicationController
 
     render("paychecks/index.html.erb")
   end
-
+  
   def show
     @bill = Bill.new
     @paycheck = Paycheck.find(params[:id])

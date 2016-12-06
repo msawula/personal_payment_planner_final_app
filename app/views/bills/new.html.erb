@@ -33,7 +33,7 @@
           Date due
         </label>
 
-        <input type="text" id="date_due" name="date_due" placeholder="Date due" class="form-control" value="<%= @bill.date_due %>">
+        <input type="date" id="date_due" name="date_due" placeholder="Date due" class="form-control" value="<%= @bill.date_due %>">
       </div>
 
       <!-- Label and input for amount_due -->
@@ -48,28 +48,30 @@
       <!-- Label and input for website_to_pay_bill -->
       <div class="form-group">
         <label for="website_to_pay_bill" class="control-label">
-          Website to pay bill
+          Website to pay bill (Optional)
         </label>
 
         <input type="text" id="website_to_pay_bill" name="website_to_pay_bill" placeholder="Website to pay bill" class="form-control" value="<%= @bill.website_to_pay_bill %>">
       </div>
 
-      <!-- Label and input for paycheck_id -->
-      <div class="form-group">
+      <!-- Label and input for paycheck_id TEMPORARILY REMOVING THE PAYCHECK FIELD-->
+      <!-- <div class="form-group">
         <label for="paycheck_id" class="control-label">
           Paycheck
         </label>
 
         <%= select_tag(:paycheck_id, options_from_collection_for_select(Paycheck.all, :id, :date_received, @bill.paycheck_id), :class => "form-control") %>
-      </div>
+
+
+      </div> -->
 
       <!-- Label and input for user_id -->
       <div class="form-group">
-        <label for="user_id" class="control-label">
+        <!-- <label for="user_id" class="control-label">
           User
-        </label>
+        </label> -->
 
-        <input type="text" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= @bill.user_id %>">
+        <input type="hidden" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= current_user.id %>">
       </div>
 
       <button class="btn btn-success">
