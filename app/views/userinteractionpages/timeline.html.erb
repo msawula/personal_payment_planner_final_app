@@ -1,21 +1,42 @@
-<h1> CURRENT TIMELINE </h1>
+<h1> TIMELINE </h1>
 
 <% @paychecks.each do |paycheck| %>
-<h2>Paycheck date: <td><%= paycheck.date_received %></td> </h2>
-<% @bills.each do |bill| %>
-<% if (bill.paycheck_id == nil) %>
-<% if bill.date_due <= paycheck.date_received%>
+<h2>Date: <td><%= paycheck.date_received %></td> </h2>
+<% paycheck.bills.each do |bill| %>
 <ul>
   <td><%= bill.recipient %></td>
   <td><%= bill.amount_due %></td>
-
 </ul>
-<% bill.paycheck_id = paycheck.id %>
 <% end %>
-<% end %>
+<ul>
+  Total Income for the period: <%= paycheck.average_amount %><br />
+  Total Amount of bills In this period: <%= paycheck.bills.pluck(:amount_due).sum %>
+</ul>
+
 <% end %>
 
-Total Amount Spent on Bills for the period: $Amount
+
+<h1> OPTIMIZED </h1>
+
+
+<% @paychecks.each do |paycheck| %>
+<h2>Date: <td><%= paycheck.date_received %></td> </h2>
+<% paycheck.bills.each do |bill| %>
+
+<% if paycheck.bills.pluck(:amount_due).sum < paycheck.average_amount %>
+
+<ul>
+  <td><%= bill.recipient %></td>
+  <td><%= bill.amount_due %></td>
+</ul>
+
+
+<% else %>
+<h5>WARNING! You do not have enough funds to pay for <%= bill.recipient %> </h5>
+
 <% end %>
 
-<h1> OPTIMIZED TIMELINE </h1>
+
+
+<% end %>
+<% end %>
