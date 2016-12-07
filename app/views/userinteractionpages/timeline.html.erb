@@ -10,7 +10,7 @@
 <% end %>
 <ul>
   Total Income for the period: <%= paycheck.average_amount %><br />
-  Total Amount of bills In this period: <%= paycheck.bills.pluck(:amount_due).sum %>
+  Total Amount of bills In this period: <%=paycheck.bills.pluck(:amount_due).sum %>
 </ul>
 
 <% end %>
@@ -19,24 +19,14 @@
 <h1> OPTIMIZED </h1>
 
 
-<% @paychecks.each do |paycheck| %>
-<h2>Date: <td><%= paycheck.date_received %></td> </h2>
-<% paycheck.bills.each do |bill| %>
-
-<% if paycheck.bills.pluck(:amount_due).sum < paycheck.average_amount %>
-
+<% @opaychecks.each do |opaycheck| %>
+<h2>Date: <td><%= opaycheck.date_received %></td> </h2>
+<% opaycheck.bills.each do |obill| %>
 <ul>
-  <td><%= bill.recipient %></td>
-  <td><%= bill.amount_due %></td>
+  <td><%= obill.recipient %></td>
+  <td><%= obill.amount_due %></td>
 </ul>
-
-
-<% else %>
-<h5>WARNING! You do not have enough funds to pay for <%= bill.recipient %> </h5>
-
 <% end %>
 
 
-
-<% end %>
 <% end %>
