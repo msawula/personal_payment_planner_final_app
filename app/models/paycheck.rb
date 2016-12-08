@@ -4,6 +4,7 @@ class Paycheck < ApplicationRecord
   belongs_to :user
   has_many   :bills,
              :dependent => :nullify
+  has_many   :proposed_bills, :class_name => "Bill", :foreign_key => "proposed_paycheck_id"
 
   # Indirect associations
 

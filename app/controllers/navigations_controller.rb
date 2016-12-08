@@ -22,30 +22,27 @@ class NavigationsController < ApplicationController
 
     end
 
-    #where my additional code should be
-    @opaychecks = @paychecks.dup
-    @obills = @bills.dup
-    @oprevious_paycheck_date = Date.new(1900,1,1)
-    @opaychecks.each do |opaycheck|
-      @running_total = opaycheck.average_amount
-      @obills.each do |obill|
-        if (obill.date_due > @oprevious_paycheck_date) && (obill.date_due <= opaycheck.date_received)
-          if (obill.amount_due < @running_total)
-            obill.paycheck = opaycheck
-            obill.save
-            @running_total = @running_total - obill.amount_due
+    #where my additional code should be for OPTIMIZED LOGIC
+    @previous_paycheck_date = Date.new(1900,1,1)
+    @paychecks.each do |paycheck|
+      @running_total = paycheck.average_amount
+      @bills.each do |bill|
+        if (bill.date_due > @previous_paycheck_date) && (bill.date_due <= paycheck.date_received)
+          if (bill.amount_due <= @running_total)
+            bill.proposed_paycheck = paycheck
+            bill.save
+            @running_total = @running_total - bill.amount_due
           else
-            obill.paycheck = nil
+            bill.proposed_paycheck = nil
+            bill.save
           end
         else
-          obill.paycheck = nil
+          bill.proposed_paycheck = nil
+          bill.save
         end
       end
-        @oprevious_paycheck_date = opaycheck.date_received
+      @previous_paycheck_date = paycheck.date_received
     end
-
-
-
     #where my additional code should end
     render("userinteractionpages/timeline.html.erb")
   end

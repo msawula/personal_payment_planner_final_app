@@ -19,14 +19,15 @@
 <h1> OPTIMIZED </h1>
 
 
-<% @opaychecks.each do |opaycheck| %>
-<h2>Date: <td><%= opaycheck.date_received %></td> </h2>
-<% opaycheck.bills.each do |obill| %>
+<% @paychecks.each do |paycheck| %>
+<h2>Date: <td><%= paycheck.date_received %></td> </h2>
+<% paycheck.bills.each do |bill| %>
+<% if bill.proposed_paycheck == paycheck %>
 <ul>
-  <td><%= obill.recipient %></td>
-  <td><%= obill.amount_due %></td>
+  <td><%= bill.recipient %></td>
+  <td><%= bill.amount_due %></td>
 </ul>
+
 <% end %>
-
-
+<% end %>
 <% end %>

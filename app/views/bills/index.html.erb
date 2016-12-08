@@ -180,6 +180,7 @@
         <th>Date due</th>
         <th>Amount due</th>
         <th>Website to pay bill</th>
+        <th>Proposed Paycheck</th>
         <th>Paycheck</th>
         <th>User</th>
         <th>Actions</th>
@@ -187,10 +188,11 @@
 
       <% @bills.each do |bill| %>
       <tr>
-        <td><%= bill.recipient %></td>
+        <td><%= bill.recipient %></td>s
         <td><%= bill.date_due %></td>
         <td><%= bill.amount_due %></td>
         <td><%= bill.website_to_pay_bill %></td>
+        <td><%= bill.proposed_paycheck %></td>
         <td>
           <% if bill.paycheck.present? %>
             <a href="/paychecks/<%= bill.paycheck.id %>">

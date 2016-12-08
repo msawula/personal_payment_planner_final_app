@@ -4,6 +4,8 @@ class Bill < ApplicationRecord
   belongs_to :user
   belongs_to :paycheck,
              :counter_cache => true
+  belongs_to :proposed_paycheck, :class_name => "Paycheck"
+  
 
   # Indirect associations
 
