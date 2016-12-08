@@ -1,33 +1,62 @@
-<h1> TIMELINE </h1>
+<body style="background-color:powderblue;">
+<div class="container">
+    <div class="row">
+        <div class="col-md-offset-4 col-md-4"><h4 style="color:red;"> This is how your current bills map out relative to your current paychecks</h4></div>
+    </div>
+    <div class="row">
+        <div class="col-md-offset-2 col-md-8"> WHERE THE CHART SHOULD GO </div>
+    </div>
+    <div class="row">
+        <div class="col-md-offset-3 col-md-6">
+          <% @paychecks.each do |paycheck| %>
+          <h2>For the paycheck you received on, <td><%= paycheck.date_received %>, these are the bill</td> </h2>
+          <% paycheck.bills.each do |bill| %>
+          <ul>
+            <td><%= bill.recipient %></td>
+            <td><%= bill.amount_due %></td>
+          </ul>
+          <% end %>
+          <ul>
+            Total Income for the period: <%= paycheck.average_amount %><br />
+            Total Amount of bills In this period: <%=paycheck.bills.pluck(:amount_due).sum %>
+          </ul>
 
-<% @paychecks.each do |paycheck| %>
-<h2>Date: <td><%= paycheck.date_received %></td> </h2>
-<% paycheck.bills.each do |bill| %>
-<ul>
-  <td><%= bill.recipient %></td>
-  <td><%= bill.amount_due %></td>
-</ul>
-<% end %>
-<ul>
-  Total Income for the period: <%= paycheck.average_amount %><br />
-  Total Amount of bills In this period: <%=paycheck.bills.pluck(:amount_due).sum %>
-</ul>
+          <% end %>
 
-<% end %>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-offset-3 col-md-3"><h3><a href="/paychecks" class="btn btn-warning btn-lg" >VIEW PAYCHECKS</a></h3>
+          </div>
+        <div class="col-md-3"><h3><a href="/paychecks" class="btn btn-warning btn-lg" >VIEW BILLS</a></h3>
+          </div>
+    </div>
+    <div class="row">
+        <div class="col-md-offset-4 col-md-4"><h4 style="color:red;">This is how we think your bills can be taken care of</h4></div>
+    </div>
+    <div class="row">
+        <div class="col-md-offset-2 col-md-8">CHART</div>
+    </div>
+    <div class="row">
+        <div class="col-md-offset-3 col-md-6"><% @paychecks.each do |paycheck| %>
+        <h2>Date: <td><%= paycheck.date_received %></td> </h2>
+        <% paycheck.bills.each do |bill| %>
+        <% if bill.proposed_paycheck == paycheck %>
+        <ul>
+          <td><%= bill.recipient %></td>
+          <td><%= bill.amount_due %></td>
+        </ul>
 
-
-<h1> OPTIMIZED </h1>
-
-
-<% @paychecks.each do |paycheck| %>
-<h2>Date: <td><%= paycheck.date_received %></td> </h2>
-<% paycheck.bills.each do |bill| %>
-<% if bill.proposed_paycheck == paycheck %>
-<ul>
-  <td><%= bill.recipient %></td>
-  <td><%= bill.amount_due %></td>
-</ul>
-
-<% end %>
-<% end %>
-<% end %>
+        <% end %>
+        <% end %>
+        <% end %></div>
+    </div>
+    <div class="row">
+        <div class="col-md-offset-3 col-md-6">AT RISH PAYMENTS</div>
+    </div>
+    <div class="row">
+        <div class="col-md-offset-3 col-md-3"><h3><a href="/paychecks" class="btn btn-warning btn-lg" >VIEW PAYCHECKS</a></h3></div>
+        <div class="col-md-3"><h3><a href="/paychecks" class="btn btn-warning btn-lg" >VIEW BILLS</a></h3></div>
+    </div>
+</div>
+</body>

@@ -1,214 +1,226 @@
-<div class="page-header">
-  <h1>
-    Bills
-    <a href="/bills/new" class="btn btn-lg btn-success">New Bill</a>
-  </h1>
-</div><div class="row mb-1">
-  <div class="col-md-12">
-    <%= search_form_for @q, :class => "collapse", :id => "bills_filters" do |f| %>
-      <p class="lead">Narrow results:</p>
+<body style="background-color:powderblue;">
 
-        <div class="form-group">
-    <%= f.label :recipient_cont, "Recipient contains" %>
-    <%= f.text_field :recipient_cont, :class => "form-control", :placeholder => "Recipient contains" %>
-  </div>
+  <div class="container">
+      <div class="row"></div>
+      <div class="row">
+          <div class="col-sm-offset-0 col-sm-3 col-md-offset-3 col-md-6">
 
-<div class="form-group">
-  <%= f.label :user_id, "User" %>
-  <div class="row">
-    <div class='col-md-6 mb-1'>
-      <%= f.text_field :user_id_gteq, :class => "form-control", :placeholder => "User greater than or equal to" %>
-    </div>
-    <div class='col-md-6'>
-      <%= f.text_field :user_id_lteq, :class => "form-control", :placeholder => "User less than or equal to" %>
-    </div>
-  </div>
-</div>
+            <div class="page-header">
+              <h1 style="color:red;">
+                Bills
+                <a href="/bills/new" class="btn btn-lg btn-success">New Bill</a>
+              </h1>
+            </div><div class="row mb-1">
+              <div class="col-md-12">
+                <%= search_form_for @q, :class => "collapse", :id => "bills_filters" do |f| %>
+                  <p class="lead">Narrow results:</p>
 
-<div class="form-group">
-    <%= f.label :website_to_pay_bill_cont, "Website to pay bill contains" %>
-    <%= f.text_field :website_to_pay_bill_cont, :class => "form-control", :placeholder => "Website to pay bill contains" %>
-  </div>
+                    <div class="form-group">
+                <%= f.label :recipient_cont, "Recipient contains" %>
+                <%= f.text_field :recipient_cont, :class => "form-control", :placeholder => "Recipient contains" %>
+              </div>
 
-<div class="form-group">
-  <%= f.label :amount_due, "Amount due" %>
-  <div class="row">
-    <div class='col-md-6 mb-1'>
-      <%= f.text_field :amount_due_gteq, :class => "form-control", :placeholder => "Amount due greater than or equal to" %>
-    </div>
-    <div class='col-md-6'>
-      <%= f.text_field :amount_due_lteq, :class => "form-control", :placeholder => "Amount due less than or equal to" %>
-    </div>
-  </div>
-</div>
-
-<div class="form-group">
-          <%= f.label :date_due, "Date due" %>
-          <div class="row">
-            <div class='col-md-6 mb-1'>
-              <div class='input-group date' id='date_duegteqPicker'>
-                  <%= f.text_field :date_due_gteq, :class => "form-control", :placeholder => "Date due greater than or equal to" %>
-                  <span class="input-group-addon">
-                      <span class="glyphicon glyphicon-calendar"></span>
-                  </span>
+            <div class="form-group">
+              <%= f.label :user_id, "User" %>
+              <div class="row">
+                <div class='col-md-6 mb-1'>
+                  <%= f.text_field :user_id_gteq, :class => "form-control", :placeholder => "User greater than or equal to" %>
+                </div>
+                <div class='col-md-6'>
+                  <%= f.text_field :user_id_lteq, :class => "form-control", :placeholder => "User less than or equal to" %>
+                </div>
               </div>
             </div>
 
-            <div class='col-md-6'>
-              <div class='input-group date' id='date_duelteqPicker'>
-                  <%= f.text_field :date_due_lteq, :class => "form-control", :placeholder => "Date due less than or equal to" %>
-                  <span class="input-group-addon">
-                      <span class="glyphicon glyphicon-calendar"></span>
-                  </span>
+            <div class="form-group">
+                <%= f.label :website_to_pay_bill_cont, "Website to pay bill contains" %>
+                <%= f.text_field :website_to_pay_bill_cont, :class => "form-control", :placeholder => "Website to pay bill contains" %>
+              </div>
+
+            <div class="form-group">
+              <%= f.label :amount_due, "Amount due" %>
+              <div class="row">
+                <div class='col-md-6 mb-1'>
+                  <%= f.text_field :amount_due_gteq, :class => "form-control", :placeholder => "Amount due greater than or equal to" %>
+                </div>
+                <div class='col-md-6'>
+                  <%= f.text_field :amount_due_lteq, :class => "form-control", :placeholder => "Amount due less than or equal to" %>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+                      <%= f.label :date_due, "Date due" %>
+                      <div class="row">
+                        <div class='col-md-6 mb-1'>
+                          <div class='input-group date' id='date_duegteqPicker'>
+                              <%= f.text_field :date_due_gteq, :class => "form-control", :placeholder => "Date due greater than or equal to" %>
+                              <span class="input-group-addon">
+                                  <span class="glyphicon glyphicon-calendar"></span>
+                              </span>
+                          </div>
+                        </div>
+
+                        <div class='col-md-6'>
+                          <div class='input-group date' id='date_duelteqPicker'>
+                              <%= f.text_field :date_due_lteq, :class => "form-control", :placeholder => "Date due less than or equal to" %>
+                              <span class="input-group-addon">
+                                  <span class="glyphicon glyphicon-calendar"></span>
+                              </span>
+                          </div>
+                        </div>
+                      </div>
+                  </div>
+                  <script type="text/javascript">
+                      $(function () {
+                          $('#date_duegteqPicker').datetimepicker({
+                              format: 'MM/DD/YYYY'
+                          });
+                          $('#date_duelteqPicker').datetimepicker({
+                              useCurrent: false,
+                              format: 'MM/DD/YYYY'
+                          });
+                          $('#date_duegteqPicker').on("dp.change", function (e) {
+                              $('#date_duelteqPicker').data("DateTimePicker").minDate(e.date);
+                          });
+                          $('#date_duelteqPicker').on("dp.change", function (e) {
+                              $('#date_duegteqPicker').data("DateTimePicker").maxDate(e.date);
+                          });
+                      });
+                  </script>
+
+            <div class="form-group">
+                      <%= f.label :created_at, "Created at" %>
+                      <div class="row">
+                        <div class='col-md-6 mb-1'>
+                          <div class='input-group date' id='created_atgteqPicker'>
+                              <%= f.text_field :created_at_gteq, :class => "form-control", :placeholder => "Created at greater than or equal to" %>
+                              <span class="input-group-addon">
+                                  <span class="glyphicon glyphicon-calendar"></span>
+                              </span>
+                          </div>
+                        </div>
+
+                        <div class='col-md-6'>
+                          <div class='input-group date' id='created_atlteqPicker'>
+                              <%= f.text_field :created_at_lteq, :class => "form-control", :placeholder => "Created at less than or equal to" %>
+                              <span class="input-group-addon">
+                                  <span class="glyphicon glyphicon-calendar"></span>
+                              </span>
+                          </div>
+                        </div>
+                      </div>
+                  </div>
+                  <script type="text/javascript">
+                      $(function () {
+                          $('#created_atgteqPicker').datetimepicker({
+                              format: 'YYYY-MM-DD hh:mm:SS'
+                          });
+                          $('#created_atlteqPicker').datetimepicker({
+                              useCurrent: false,
+                              format: 'YYYY-MM-DD hh:mm:SS'
+                          });
+                          $('#created_atgteqPicker').on("dp.change", function (e) {
+                              $('#created_atlteqPicker').data("DateTimePicker").minDate(e.date);
+                          });
+                          $('#created_atlteqPicker').on("dp.change", function (e) {
+                              $('#created_atgteqPicker').data("DateTimePicker").maxDate(e.date);
+                          });
+                      });
+                  </script>
+
+                    <div class="form-group">
+                      <%= f.label :date_received, "Paycheck Date received" %>
+                      <div class="row">
+                        <div class='col-md-6 mb-1'>
+                          <div class='input-group date' id='paycheckgteqdate_receivedPicker'>
+                              <%= f.text_field :paycheck_date_received_gteq, :class => "form-control", :placeholder => "Paycheck Date received greater than or equal to" %>
+                              <span class="input-group-addon">
+                                  <span class="glyphicon glyphicon-calendar"></span>
+                              </span>
+                          </div>
+                        </div>
+
+                        <div class='col-md-6'>
+                          <div class='input-group date' id='paychecklteqdate_receivedPicker'>
+                              <%= f.text_field :paycheck_date_received_lteq, :class => "form-control", :placeholder => "Paycheck Date received less than or equal to" %>
+                              <span class="input-group-addon">
+                                  <span class="glyphicon glyphicon-calendar"></span>
+                              </span>
+                          </div>
+                        </div>
+                      </div>
+                  </div>
+                  <script type="text/javascript">
+                      $(function () {
+                          $('#paycheckgteqdate_receivedPicker').datetimepicker({
+                              format: 'MM/DD/YYYY'
+                          });
+                          $('#paychecklteqdate_receivedPicker').datetimepicker({
+                              useCurrent: false,
+                              format: 'MM/DD/YYYY'
+                          });
+                          $('#paycheckgteqdate_receivedPicker').on("dp.change", function (e) {
+                              $('#paychecklteqdate_receivedPicker').data("DateTimePicker").minDate(e.date);
+                          });
+                          $('#paychecklteqdate_receivedPicker').on("dp.change", function (e) {
+                              $('#paycheckgteqdate_receivedPicker').data("DateTimePicker").maxDate(e.date);
+                          });
+                      });
+                  </script>
+
+                  <%= f.submit :class => "btn btn-primary btn-block mb-1" %>
+
+                  <a href="/bills" class="btn btn-default btn-block mb-1">Clear filters</a>
+                <% end %>
+                <a class="btn btn-default btn-block mb-1" data-toggle="collapse" href="#bills_filters">
+                  Show Filters
+                </a>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-12">
+                <table class="table table-striped table-hover">
+                  <tr>
+                    <th>Recipient</th>
+                    <th>Date due</th>
+                    <th>Amount due</th>
+                    <th>Website to pay bill</th>
+                  
+                    <th>Paycheck</th>
+                    <th>User</th>
+                    <th>Actions</th>
+                  </tr>
+
+                  <% @bills.each do |bill| %>
+                  <tr>
+                    <td><%= bill.recipient %></td>s
+                    <td><%= bill.date_due %></td>
+                    <td><%= bill.amount_due %></td>
+                    <td><%= bill.website_to_pay_bill %></td>
+                    <td>
+                      <% if bill.paycheck.present? %>
+                        <a href="/paychecks/<%= bill.paycheck.id %>">
+                          <%= bill.paycheck.date_received %>
+                        </a>
+                      <% end %>
+                    </td>
+                    <td><%= bill.user_id %></td>
+                    <td>
+                      <a href="/bills/<%= bill.id %>" class="btn btn-primary">Show</a>
+                      <a href="/bills/<%= bill.id %>/edit" class="btn btn-warning">Edit</a>
+                      <a href="/delete_bill/<%= bill.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+                    </td>
+                  </tr>
+                  <% end %>
+                </table>
+                <%= paginate @bills, theme: 'twitter-bootstrap-4' %>
               </div>
             </div>
           </div>
       </div>
-      <script type="text/javascript">
-          $(function () {
-              $('#date_duegteqPicker').datetimepicker({
-                  format: 'MM/DD/YYYY'
-              });
-              $('#date_duelteqPicker').datetimepicker({
-                  useCurrent: false,
-                  format: 'MM/DD/YYYY'
-              });
-              $('#date_duegteqPicker').on("dp.change", function (e) {
-                  $('#date_duelteqPicker').data("DateTimePicker").minDate(e.date);
-              });
-              $('#date_duelteqPicker').on("dp.change", function (e) {
-                  $('#date_duegteqPicker').data("DateTimePicker").maxDate(e.date);
-              });
-          });
-      </script>
-
-<div class="form-group">
-          <%= f.label :created_at, "Created at" %>
-          <div class="row">
-            <div class='col-md-6 mb-1'>
-              <div class='input-group date' id='created_atgteqPicker'>
-                  <%= f.text_field :created_at_gteq, :class => "form-control", :placeholder => "Created at greater than or equal to" %>
-                  <span class="input-group-addon">
-                      <span class="glyphicon glyphicon-calendar"></span>
-                  </span>
-              </div>
-            </div>
-
-            <div class='col-md-6'>
-              <div class='input-group date' id='created_atlteqPicker'>
-                  <%= f.text_field :created_at_lteq, :class => "form-control", :placeholder => "Created at less than or equal to" %>
-                  <span class="input-group-addon">
-                      <span class="glyphicon glyphicon-calendar"></span>
-                  </span>
-              </div>
-            </div>
-          </div>
-      </div>
-      <script type="text/javascript">
-          $(function () {
-              $('#created_atgteqPicker').datetimepicker({
-                  format: 'YYYY-MM-DD hh:mm:SS'
-              });
-              $('#created_atlteqPicker').datetimepicker({
-                  useCurrent: false,
-                  format: 'YYYY-MM-DD hh:mm:SS'
-              });
-              $('#created_atgteqPicker').on("dp.change", function (e) {
-                  $('#created_atlteqPicker').data("DateTimePicker").minDate(e.date);
-              });
-              $('#created_atlteqPicker').on("dp.change", function (e) {
-                  $('#created_atgteqPicker').data("DateTimePicker").maxDate(e.date);
-              });
-          });
-      </script>
-
-        <div class="form-group">
-          <%= f.label :date_received, "Paycheck Date received" %>
-          <div class="row">
-            <div class='col-md-6 mb-1'>
-              <div class='input-group date' id='paycheckgteqdate_receivedPicker'>
-                  <%= f.text_field :paycheck_date_received_gteq, :class => "form-control", :placeholder => "Paycheck Date received greater than or equal to" %>
-                  <span class="input-group-addon">
-                      <span class="glyphicon glyphicon-calendar"></span>
-                  </span>
-              </div>
-            </div>
-
-            <div class='col-md-6'>
-              <div class='input-group date' id='paychecklteqdate_receivedPicker'>
-                  <%= f.text_field :paycheck_date_received_lteq, :class => "form-control", :placeholder => "Paycheck Date received less than or equal to" %>
-                  <span class="input-group-addon">
-                      <span class="glyphicon glyphicon-calendar"></span>
-                  </span>
-              </div>
-            </div>
-          </div>
-      </div>
-      <script type="text/javascript">
-          $(function () {
-              $('#paycheckgteqdate_receivedPicker').datetimepicker({
-                  format: 'MM/DD/YYYY'
-              });
-              $('#paychecklteqdate_receivedPicker').datetimepicker({
-                  useCurrent: false,
-                  format: 'MM/DD/YYYY'
-              });
-              $('#paycheckgteqdate_receivedPicker').on("dp.change", function (e) {
-                  $('#paychecklteqdate_receivedPicker').data("DateTimePicker").minDate(e.date);
-              });
-              $('#paychecklteqdate_receivedPicker').on("dp.change", function (e) {
-                  $('#paycheckgteqdate_receivedPicker').data("DateTimePicker").maxDate(e.date);
-              });
-          });
-      </script>
-
-      <%= f.submit :class => "btn btn-primary btn-block mb-1" %>
-
-      <a href="/bills" class="btn btn-default btn-block mb-1">Clear filters</a>
-    <% end %>
-    <a class="btn btn-default btn-block mb-1" data-toggle="collapse" href="#bills_filters">
-      Show Filters
-    </a>
   </div>
-</div>
 
-<div class="row">
-  <div class="col-md-12">
-    <table class="table table-striped table-hover">
-      <tr>
-        <th>Recipient</th>
-        <th>Date due</th>
-        <th>Amount due</th>
-        <th>Website to pay bill</th>
-        <th>Proposed Paycheck</th>
-        <th>Paycheck</th>
-        <th>User</th>
-        <th>Actions</th>
-      </tr>
 
-      <% @bills.each do |bill| %>
-      <tr>
-        <td><%= bill.recipient %></td>s
-        <td><%= bill.date_due %></td>
-        <td><%= bill.amount_due %></td>
-        <td><%= bill.website_to_pay_bill %></td>
-        <td><%= bill.proposed_paycheck %></td>
-        <td>
-          <% if bill.paycheck.present? %>
-            <a href="/paychecks/<%= bill.paycheck.id %>">
-              <%= bill.paycheck.date_received %>
-            </a>
-          <% end %>
-        </td>
-        <td><%= bill.user_id %></td>
-        <td>
-          <a href="/bills/<%= bill.id %>" class="btn btn-primary">Show</a>
-          <a href="/bills/<%= bill.id %>/edit" class="btn btn-warning">Edit</a>
-          <a href="/delete_bill/<%= bill.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
-        </td>
-      </tr>
-      <% end %>
-    </table>
-    <%= paginate @bills, theme: 'twitter-bootstrap-4' %>
-  </div>
-</div>
+</body>

@@ -1,64 +1,78 @@
 <!-- Validation failure messages -->
-<% if @paycheck.errors.any? %>
-  <% @paycheck.errors.full_messages.each do |message| %>
-    <div class="alert alert-dismissable alert-danger">
-      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-      <%= message %>
-    </div>
-  <% end %>
-<% end %>
+<body style="background-color:powderblue;">
 
-<div class="page-header">
-  <h3>Add Paycheck</h3>
-</div>
+  <div class="container">
+      <div class="row"></div>
+      <div class="row">
+          <div class="col-sm-offset-0 col-sm-3 col-md-offset-3 col-md-6">
 
-<div class="row">
-  <div class="col-md-12">
-    <form action="/create_paycheck" method="post">
-      <!-- Hidden input for authenticity token to protect from forgery -->
-      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
 
-      <!-- Label and input for date_received -->
-      <div class="form-group">
-        <label for="date_received" class="control-label">
-          Date received
-        </label>
+            <% if @paycheck.errors.any? %>
+              <% @paycheck.errors.full_messages.each do |message| %>
+                <div class="alert alert-dismissable alert-danger">
+                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                  <%= message %>
+                </div>
+              <% end %>
+            <% end %>
 
-        <input type="date" id="date_received" name="date_received" placeholder="Date received" class="form-control" value="<%= @paycheck.date_received %>">
+            <div class="page-header">
+              <h1 style="color:red;">Add Paycheck</h1>
+            </div>
+
+            <div class="row">
+              <div class="col-md-12">
+                <form action="/create_paycheck" method="post">
+                  <!-- Hidden input for authenticity token to protect from forgery -->
+                  <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+                  <!-- Label and input for date_received -->
+                  <div class="form-group">
+                    <label for="date_received" class="control-label">
+                      Date received
+                    </label>
+
+                    <input type="date" id="date_received" name="date_received" placeholder="Date received" class="form-control" value="<%= @paycheck.date_received %>">
+                  </div>
+
+                  <!-- Label and input for average_amount -->
+                  <div class="form-group">
+                    <label for="average_amount" class="control-label">
+                      Average amount
+                    </label>
+
+                    <input type="text" id="average_amount" name="average_amount" placeholder="Average amount" class="form-control" value="<%= @paycheck.average_amount %>">
+                  </div>
+
+                  <!-- Label and input for income_source -->
+                  <div class="form-group">
+                    <label for="income_source" class="control-label">
+                      Income source
+                    </label>
+
+                    <input type="text" id="income_source" name="income_source" placeholder="Income source" class="form-control" value="<%= @paycheck.income_source %>">
+                  </div>
+
+                  <!-- Label and input for user_id -->
+                  <div class="form-group">
+                    <!-- <label for="user_id" class="control-label">
+                      User
+                    </label> -->
+
+                    <input type="hidden" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= current_user.id %>">
+                  </div>
+
+                  <button class="btn btn-success">
+                    Create Paycheck
+                  </button>
+                  or
+                  <a href="/paychecks">Cancel</a>
+                </form>
+              </div>
+            </div>
+          </div>
       </div>
-
-      <!-- Label and input for average_amount -->
-      <div class="form-group">
-        <label for="average_amount" class="control-label">
-          Average amount
-        </label>
-
-        <input type="text" id="average_amount" name="average_amount" placeholder="Average amount" class="form-control" value="<%= @paycheck.average_amount %>">
-      </div>
-
-      <!-- Label and input for income_source -->
-      <div class="form-group">
-        <label for="income_source" class="control-label">
-          Income source
-        </label>
-
-        <input type="text" id="income_source" name="income_source" placeholder="Income source" class="form-control" value="<%= @paycheck.income_source %>">
-      </div>
-
-      <!-- Label and input for user_id -->
-      <div class="form-group">
-        <!-- <label for="user_id" class="control-label">
-          User
-        </label> -->
-
-        <input type="hidden" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= current_user.id %>">
-      </div>
-
-      <button class="btn btn-success">
-        Create Paycheck
-      </button>
-      or
-      <a href="/paychecks">Cancel</a>
-    </form>
   </div>
-</div>
+
+
+</body>

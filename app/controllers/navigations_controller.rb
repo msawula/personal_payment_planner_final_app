@@ -7,7 +7,7 @@ class NavigationsController < ApplicationController
 
   def timeline
 
-    @paychecks = Paycheck.where(:user_id => current_user)
+    @paychecks = Paycheck.where(:user_id => current_user).order(date_received: :asc)
     @bills = Bill.where(:user_id => current_user)
 
     @previous_paycheck_date = Date.new(1900,1,1)
@@ -23,7 +23,7 @@ class NavigationsController < ApplicationController
     end
 
     #where my additional code should be for OPTIMIZED LOGIC
-    @previous_paycheck_date = Date.new(1900,1,1)
+    @previous_paycheck_date = Date.new(2000,1,1)
     @paychecks.each do |paycheck|
       @running_total = paycheck.average_amount
       @bills.each do |bill|

@@ -2,6 +2,8 @@ source 'http://rubygems.org'
 
 gem 'devise'
 
+gem "chartkick"
+
 gem "coffee-script-source", "1.8.0"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
