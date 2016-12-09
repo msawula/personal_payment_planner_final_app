@@ -23,17 +23,17 @@
                   <dt>Website to pay bill</dt>
                   <dd><%= @bill.website_to_pay_bill %></dd>
 
-                  <dt>Paycheck</dt>
+                  <!-- <dt>Paycheck</dt>
                   <dd>
                     <% if @bill.paycheck.present? %>
                       <a href="/paychecks/<%= @bill.paycheck_id %>">
                         <%= @bill.paycheck.date_received %>
                       </a>
                     <% end %>
-                  </dd>
+                  </dd> -->
 
-                  <dt>User</dt>
-                  <dd><%= @bill.user_id %></dd>
+                  <!-- <dt>User</dt>
+                  <dd><%= @bill.user_id %></dd> -->
 
                 </dl>
 
@@ -48,6 +48,8 @@
                     Delete
                   </a>
                 </div>
+
+                <div class="col-md-offset-5 col-md-5"><h3><a href="/bills" class="btn btn-success btn-lg" >Back to Bills</a></h3></div>
               </div>
             </div>
           </div>

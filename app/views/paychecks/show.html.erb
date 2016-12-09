@@ -16,13 +16,12 @@
                 <dd><%= @paycheck.date_received %></dd>
 
                 <dt>Average amount</dt>
-                <dd><%= @paycheck.average_amount %></dd>
+                <dd>$<%= @paycheck.average_amount %></dd>
 
                 <dt>Income source</dt>
                 <dd><%= @paycheck.income_source %></dd>
 
-                <dt>User</dt>
-                <dd><%= @paycheck.user_id %></dd>
+
 
               </dl>
 
@@ -37,98 +36,17 @@
                   Delete
                 </a>
               </div>
+
+
+<div class="col-md-offset-5 col-md-5"><h3><a href="/paychecks" class="btn btn-success btn-lg" >Back to Paychecks</a></h3></div>
             </div>
             </div>
 
             <!-- A Paycheck has many bills -->
 
-            <div class="row">
-            <div class="col-md-12">
-              <ul class="list-group">
-                <li class="list-group-item list-group-item-info">
-                  Bills
-                </li>
 
-                <% @paycheck.bills.each do |bill| %>
-                  <li class="list-group-item">
-                    <a href="/bills/<%= bill.id %>">
-                      <%= bill.recipient %>
-                    </a>
-                    <div class="btn-group btn-group-xs pull-right">
-                      <a href="/bills/<%= bill.id %>" class="btn btn-primary">
-                        <i class="fa fa-search-plus"></i>
-                      </a>
-                      <a href="/bills/<%= bill.id %>/edit" class="btn btn-warning">
-                        <i class="fa fa-edit"></i>
-                      </a>
-                      <a href="/delete_bill/<%= bill.id %>" class="btn btn-danger" rel="nofollow">
-                        <i class="fa fa-trash-o"></i>
-                      </a>
-                    </div>
-                  </li>
-                <% end %>
 
-                <li class="list-group-item">
-                  <form action="/create_bill" method="post">
-                <!-- Hidden input for authenticity token to protect from forgery -->
-                <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
 
-                <!-- Label and input for recipient -->
-                <div class="form-group">
-                  <label for="recipient" class="control-label">
-                    Recipient
-                  </label>
-
-                  <input type="text" id="recipient" name="recipient" placeholder="Recipient" class="form-control" value="">
-                </div>
-
-                <!-- Label and input for date_due -->
-                <div class="form-group">
-                  <label for="date_due" class="control-label">
-                    Date due
-                  </label>
-
-                  <input type="text" id="date_due" name="date_due" placeholder="Date due" class="form-control" value="">
-                </div>
-
-                <!-- Label and input for amount_due -->
-                <div class="form-group">
-                  <label for="amount_due" class="control-label">
-                    Amount due
-                  </label>
-
-                  <input type="text" id="amount_due" name="amount_due" placeholder="Amount due" class="form-control" value="">
-                </div>
-
-                <!-- Label and input for website_to_pay_bill -->
-                <div class="form-group">
-                  <label for="website_to_pay_bill" class="control-label">
-                    Website to pay bill
-                  </label>
-
-                  <input type="text" id="website_to_pay_bill" name="website_to_pay_bill" placeholder="Website to pay bill" class="form-control" value="">
-                </div>
-
-                <!-- Label and input for paycheck_id -->
-                <input type="hidden" name="paycheck_id" value="<%= @paycheck.id %>">
-
-                <!-- Label and input for user_id -->
-                <div class="form-group">
-                  <label for="user_id" class="control-label">
-                    User
-                  </label>
-
-                  <input type="text" id="user_id" name="user_id" placeholder="User" class="form-control" value="">
-                </div>
-
-                <button class="btn btn-block btn-success">
-                  Create Bill
-                </button>
-              </form>
-                </li>
-              </ul>
-            </div>
-            </div>
 
           </div>
       </div>

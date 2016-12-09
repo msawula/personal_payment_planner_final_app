@@ -147,7 +147,6 @@
                     <th>Date received</th>
                     <th>Average amount</th>
                     <th>Income source</th>
-                    <th>User</th>
                     <th>Actions</th>
                   </tr>
 
@@ -156,7 +155,6 @@
                     <td><%= paycheck.date_received %></td>
                     <td><%= paycheck.average_amount %></td>
                     <td><%= paycheck.income_source %></td>
-                    <td><%= paycheck.user_id %></td>
                     <td>
                       <a href="/paychecks/<%= paycheck.id %>" class="btn btn-primary">Show</a>
                       <a href="/paychecks/<%= paycheck.id %>/edit" class="btn btn-warning">Edit</a>
@@ -171,5 +169,10 @@
           </div>
       </div>
   </div>
-
+  <div class="row">
+      <div class="col-md-offset-5 col-md-5"><h3><a href="/bills" class="btn btn-success btn-lg" >ADD BILLS</a></h3></div>
+  </div>
+  <div class="row">
+      <div class="col-md-offset-5 col-md-5"><h3><a href="/timeline" class="btn btn-success btn-lg" >MY TIMELINE</a></h3></div>
+  </div>
 </body>

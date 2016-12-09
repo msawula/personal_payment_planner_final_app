@@ -54,11 +54,11 @@
 
                   <!-- Label and input for user_id -->
                   <div class="form-group">
-                    <label for="user_id" class="control-label">
+                    <!-- <label for="user_id" class="control-label">
                       User
-                    </label>
+                    </label> -->
 
-                    <input type="text" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= @paycheck.user_id %>">
+                    <input type="hidden" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= @paycheck.user_id %>">
                   </div>
 
                   <button class="btn btn-warning">
