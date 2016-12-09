@@ -3,6 +3,10 @@
     <div class="row">
         <div class="col-md-offset-4 col-md-4" ><h4 style="color:red;">WHERE YOU STAND</h4></div>
     </div>
+
+    <div class="row">
+        <div class="col-md-offset-4 col-md-4" ><p style="color:black;">For each point on the chart below, hover over it to see the total amount of all bills due on that day</p></div>
+    </div>
     <div class="row">
         <div class="col-md-offset-2 col-md-8"> <%= line_chart Bill.group(:date_due).sum(:amount_due)%></div>
     </div>
