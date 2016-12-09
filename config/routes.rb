@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   # CREATE
   get "/welcome", :controller => "navigations", :action => "splashpage"
   get "/timeline", :controller => "navigations", :action => "timeline"
+  get "/ouropinion", :controller => "navigations", :action => "opinion"
   # Routes for the Bill resource:
   # CREATE
   get "/bills/new", :controller => "bills", :action => "new"

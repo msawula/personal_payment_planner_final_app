@@ -1,7 +1,7 @@
 <body style="background-color:powderblue;">
 <div class="container">
     <div class="row">
-        <div class="col-md-offset-4 col-md-4"><h4 style="color:red;">How your bills currently map out...</h4></div>
+        <div class="col-md-offset-4 col-md-4"><h4 style="color:red;">YOUR BILLS</h4></div>
     </div>
     <div class="row">
         <div class="col-md-offset-2 col-md-8"> THIS IS WHERE THE CHART SHOULD GO</div>
@@ -22,9 +22,9 @@
             <b>Total Income for the period: $<%= paycheck.average_amount %><br/></b>
             <b>Total Amount of bills In this period: $<%=paycheck.bills.pluck(:amount_due).sum %><br/></b>
             <% if paycheck.average_amount < paycheck.bills.pluck(:amount_due).sum %>
-            <b>Total Deficit for the period: $<%=paycheck.average_amount-paycheck.bills.pluck(:amount_due).sum%></b>
+            <b style="color:red;">Total Deficit for the period: $<%=paycheck.average_amount-paycheck.bills.pluck(:amount_due).sum%></b>
                 <% else %>
-                <b>Total Surplus for the period: $<%=paycheck.average_amount-paycheck.bills.pluck(:amount_due).sum%></b>
+                <b style="color:green;">Total Surplus for the period: $<%=paycheck.average_amount-paycheck.bills.pluck(:amount_due).sum%></b>
                 <% end %>
           </ul>
 
@@ -35,58 +35,13 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-offset-3 col-md-3"><h3><a href="/paychecks" class="btn btn-warning btn-lg" >VIEW PAYCHECKS</a></h3>
+        <div class="col-md-offset-3 col-md-3"><h3><a href="/paychecks" class="btn btn-warning btn-lg" >VIEW ALL OF MY PAYCHECKS</a></h3>
           </div>
-        <div class="col-md-3"><h3><a href="/paychecks" class="btn btn-warning btn-lg" >VIEW BILLS</a></h3>
+        <div class="col-md-3"><h3><a href="/paychecks" class="btn btn-warning btn-lg" >VIEW ALL OF MY BILLS</a></h3>
           </div>
     </div>
     <div class="row">
-        <div class="col-md-offset-4 col-md-4"><h4 style="color:red;">Given your current income and bills, these are the bills that we believe can be paid for. "At risk" payments are listed below.</h4></div>
-    </div>
-    <div class="row">
-        <div class="col-md-offset-2 col-md-8">CHART</div>
-    </div>
-    <div class="row">
-        <div class="col-md-offset-3 col-md-6"><% @paychecks.each do |paycheck| %>
-        <p style="color:brown;"><b>For the paycheck you will receive on, <td><%= paycheck.date_received %>, the following are bills that can be paid for by this paycheck</b> </p>
-        <% paycheck.bills.each do |bill| %>
-        <% if bill.proposed_paycheck == paycheck %>
-        <ul>
-          <td><b><%= bill.recipient %></b></td>
-          <td>in the amount of <b>$<%= bill.amount_due %></b></td>
-          <td>due on: <b><%= bill.date_due %></b></td>
-          <a href="/bills/<%= bill.id %>/edit" class="btn btn-default">Make edits to this bill</a>
-        </ul>
-
-        <% end %>
-        <% end %>
-        <% end %></div>
-    </div>
-    <div class="row">
-        <div class="col-md-offset-4 col-md-4"><h4 style="color:red;">AT RISH PAYMENTS - You may be in danger of not having sufficient income to make these payments!</h4></div>
-    </div>
-    <div class="row">
-
-
-
-      <div class="col-md-offset-3 col-md-6"><% @bills.each do |bill| %>
-    <% if bill.proposed_paycheck == nil %>
-      <ul>
-        <td><b><%= bill.recipient %></b></td>
-        <td>in the amount of <b>$<%= bill.amount_due %></b></td>
-        <td>due on: <b><%= bill.date_due %></b></td>
-        <a href="/bills/<%= bill.id %>/edit" class="btn btn-default">Make edits to this bill</a>
-      </ul>
-
-      <% end %>
-      <% end %>
-</div>
-
-
-      </div>
-    <div class="row">
-        <div class="col-md-offset-3 col-md-3"><h3><a href="/paychecks" class="btn btn-warning btn-lg" >VIEW PAYCHECKS</a></h3></div>
-        <div class="col-md-3"><h3><a href="/paychecks" class="btn btn-warning btn-lg" >VIEW BILLS</a></h3></div>
+        <div class="col-md-offset-5 col-md-5"><h3><a href="/ouropinion" class="btn btn-success btn-lg" >WHAT WE THINK</a></h3></div>
     </div>
 </div>
 </body>
