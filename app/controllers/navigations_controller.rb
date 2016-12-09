@@ -27,7 +27,6 @@ class NavigationsController < ApplicationController
     @paychecks.each do |paycheck|
       @running_total = paycheck.average_amount
       @bills.each do |bill|
-        puts bill.inspect
         if (bill.date_due < @previous_paycheck_date) && (bill.date_due >= paycheck.date_received)
           if (bill.amount_due <= @running_total)
             bill.proposed_paycheck = paycheck
