@@ -4,9 +4,6 @@
       <div class="col-md-offset-4 col-md-4"><h4 style="color:red;">Given your current income and bills, these are the bills that we believe can be paid for. "At risk" payments are listed below.</h4></div>
     </div>
     <div class="row">
-      <div class="col-md-offset-2 col-md-8">CHART</div>
-    </div>
-    <div class="row">
       <div class="col-md-offset-3 col-md-6"><% @paychecks.each do |paycheck| %>
         <p style="color:brown;"><b>For the paycheck you will receive on, <td><%= paycheck.date_received %>, the following are bills that can be paid for by this paycheck</b> </p>
           <% paycheck.bills.each do |bill| %>
@@ -25,7 +22,7 @@
 
 
         <div class="row">
-          <div class="col-md-offset-4 col-md-4"><h4 style="color:red;">AT RISH PAYMENTS - You may be in danger of not having sufficient income to make the following payments!</h4></div>
+          <div class="col-md-offset-4 col-md-4"><h4 style="color:red;">AT RISK PAYMENTS - You may be in danger of not having sufficient income to make the following payments!</h4></div>
         </div>
         <div class="row">
 
